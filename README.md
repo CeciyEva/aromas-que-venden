@@ -1,0 +1,980 @@
+[index.html](https://github.com/user-attachments/files/28413831/index.html)
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aromas que Venden al Mundo</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#07030f;--bg2:#0e071c;--card:#160d28;--card2:#1d1035;--purple:#6b3e72;--pmid:#c4a0c8;--ppale:#f0d4f4;--gold:#c8a040;--gbright:#ffbd59;--gpale:#ffe8b0;--cream:#f5ede0;--muted:#a090b8;--bdr:rgba(200,160,64,.18);--bdrs:rgba(200,160,64,.45)}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--cream);overflow-x:hidden;line-height:1.7}
+h1,h2,h3,h4{font-family:'Playfair Display',serif}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;height:54px;padding:0 24px;display:flex;align-items:center;justify-content:space-between;background:rgba(7,3,15,.93);backdrop-filter:blur(16px);border-bottom:1px solid var(--bdr)}
+.nav-logo{font-family:'Playfair Display',serif;font-size:.88rem;color:var(--gbright);font-style:italic;white-space:nowrap}
+.nav-links{display:flex;gap:0;list-style:none;overflow-x:auto;scrollbar-width:none}.nav-links::-webkit-scrollbar{display:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.68rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;padding:5px 9px;border-radius:14px;transition:all .25s;white-space:nowrap}
+.nav-links a:hover,.nav-links a.active{color:var(--gbright);background:rgba(200,160,64,.1)}
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:80px 24px 60px;text-align:center}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 75% 55% at 50% 32%,rgba(107,62,114,.28) 0%,transparent 62%),var(--bg)}
+.smoke-svg{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:280px;height:440px;pointer-events:none}
+.sp{fill:none;stroke-linecap:round;opacity:0}
+.sp1{stroke:var(--gbright);stroke-width:2.2;animation:sr1 5s ease-in-out infinite}
+.sp2{stroke:var(--gold);stroke-width:1.8;animation:sr2 6.5s ease-in-out 1.2s infinite}
+.sp3{stroke:var(--pmid);stroke-width:1.4;animation:sr1 7s ease-in-out 2.5s infinite}
+.sp4{stroke:var(--gbright);stroke-width:1.1;animation:sr2 8s ease-in-out .7s infinite}
+.sp5{stroke:var(--gold);stroke-width:1.5;animation:sr1 5.5s ease-in-out 3.5s infinite}
+@keyframes sr1{0%{opacity:0;transform:translateY(0) scaleX(1)}18%{opacity:.75}55%{opacity:.3;transform:translateY(-60px) scaleX(1.3)}100%{opacity:0;transform:translateY(-145px) scaleX(.75)}}
+@keyframes sr2{0%{opacity:0;transform:translateY(0) rotate(-1deg)}22%{opacity:.6}52%{opacity:.25;transform:translateY(-70px) rotate(4deg)}100%{opacity:0;transform:translateY(-150px) rotate(-6deg)}}
+.hero-content{position:relative;z-index:1;max-width:720px}
+.h-eye{font-size:.68rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;opacity:0;animation:fu 1s .3s forwards}
+.h-title{font-size:clamp(2.6rem,6vw,4.6rem);line-height:1.08;color:var(--cream);margin-bottom:16px;opacity:0;animation:fu 1s .5s forwards}
+.h-title em{color:var(--gbright);font-style:italic;display:block}
+.h-sub{font-size:.97rem;color:var(--muted);max-width:480px;margin:0 auto 38px;font-weight:300;opacity:0;animation:fu 1s .7s forwards}
+.h-cta{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;opacity:0;animation:fu 1s .9s forwards}
+.btn-p{padding:12px 28px;background:linear-gradient(135deg,var(--purple),#8e35a0);color:var(--cream);border:none;border-radius:3px;font-family:'Nunito',sans-serif;font-size:.83rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;text-decoration:none;box-shadow:0 8px 22px rgba(107,62,114,.4);transition:transform .2s,box-shadow .2s}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(107,62,114,.55)}
+.btn-g{padding:12px 28px;background:transparent;color:var(--gbright);border:1px solid var(--bdrs);border-radius:3px;font-family:'Nunito',sans-serif;font-size:.83rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:all .3s}
+.btn-g:hover{background:rgba(200,160,64,.09)}
+@keyframes fu{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.quotes{padding:56px 24px;background:var(--bg2);border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr);text-align:center}
+.q-wrap{min-height:110px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.q-text{font-family:'Playfair Display',serif;font-size:clamp(1.1rem,2.4vw,1.6rem);font-style:italic;color:var(--gpale);max-width:680px;line-height:1.5;opacity:0;transform:translateY(8px);transition:opacity .8s,transform .8s}
+.q-text.vis{opacity:1;transform:translateY(0)}
+.q-auth{margin-top:10px;font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);opacity:0;transition:opacity .8s .2s}
+.q-auth.vis{opacity:1}
+.q-dots{display:flex;gap:7px;justify-content:center;margin-top:18px}
+.qd{width:6px;height:6px;border-radius:50%;background:var(--bdr);cursor:pointer;transition:all .3s}
+.qd.on{background:var(--gbright);width:16px;border-radius:3px}
+.map-sec{padding:66px 24px;background:var(--bg2)}
+.map-center{text-align:center;margin-bottom:38px}
+.map-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:12px;max-width:1040px;margin:0 auto}
+.map-card{background:var(--card);border:1px solid var(--bdr);border-radius:8px;padding:22px 15px;text-align:center;cursor:pointer;transition:all .3s;text-decoration:none;display:block}
+.map-card:hover{border-color:var(--bdrs);transform:translateY(-4px);box-shadow:0 14px 30px rgba(107,62,114,.2)}
+.map-icon{font-size:1.8rem;margin-bottom:9px;display:block}
+.map-bono{font-size:.61rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;font-weight:700}
+.map-title{font-family:'Playfair Display',serif;font-size:.86rem;color:var(--cream);line-height:1.3}
+.sec{padding:68px 24px;max-width:1040px;margin:0 auto}
+.sec-bg{background:var(--bg2)}
+.sec-wrap{max-width:1040px;margin:0 auto;padding:68px 24px}
+.divider{height:1px;background:linear-gradient(to right,transparent,var(--bdrs),transparent)}
+.eyebrow{font-size:.65rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.sec-title{font-size:clamp(1.75rem,3.5vw,2.55rem);color:var(--cream);margin-bottom:10px;line-height:1.22}
+.sec-title em{color:var(--gbright);font-style:italic}
+.sec-lead{font-size:.92rem;color:var(--muted);max-width:540px;margin-bottom:36px;font-weight:300}
+/* TABS */
+.tab-row{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:24px}
+.tb{padding:7px 15px;border:1px solid var(--bdr);border-radius:20px;font-size:.76rem;font-family:'Nunito',sans-serif;font-weight:600;color:var(--muted);background:transparent;cursor:pointer;transition:all .25s;white-space:nowrap}
+.tb.on{background:linear-gradient(135deg,var(--purple),#8e35a0);border-color:transparent;color:var(--cream);box-shadow:0 4px 12px rgba(107,62,114,.28)}
+.tb.gold.on{background:rgba(200,160,64,.12);border-color:var(--bdrs);color:var(--gbright);box-shadow:none}
+.panel{display:none}.panel.on{display:block;animation:fi .3s ease}
+@keyframes fi{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
+/* PRODUCTS */
+.prod-card{background:var(--card);border:1px solid var(--bdr);border-radius:8px;padding:30px;position:relative;overflow:hidden}
+.prod-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--purple),var(--gbright))}
+.prod-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+@media(max-width:580px){.prod-grid{grid-template-columns:1fr}}
+.p-num{font-family:'Playfair Display',serif;font-size:3.8rem;color:rgba(200,160,64,.09);font-weight:900;line-height:1;position:absolute;right:18px;top:14px}
+.p-ico{font-size:2.5rem;margin-bottom:11px;display:block}
+.p-name{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--gpale);margin-bottom:11px}
+.p-desc{font-size:.87rem;color:var(--muted);line-height:1.8;margin-bottom:12px}
+.p-tag{display:inline-block;padding:3px 11px;border:1px solid var(--bdr);border-radius:2px;font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:700}
+.p-props h4{font-size:.87rem;color:var(--gpale);margin-bottom:10px}
+.prop-list{list-style:none}
+.prop-list li{padding:7px 0;border-bottom:1px solid rgba(200,160,64,.08);font-size:.83rem;color:var(--muted);display:flex;gap:9px}
+.prop-list li:last-child{border-bottom:none}
+.lk{color:var(--gold);font-weight:700;font-size:.65rem;letter-spacing:.08em;text-transform:uppercase;flex-shrink:0;min-width:72px;margin-top:2px}
+.tip-box{background:rgba(107,62,114,.13);border:1px solid rgba(107,62,114,.26);border-radius:4px;padding:11px 14px;margin-top:11px;font-size:.78rem;color:var(--pmid)}
+/* ACCORDIONS */
+.acc{border:1px solid var(--bdr);border-radius:6px;margin-bottom:9px;overflow:hidden;transition:border-color .3s}
+.acc.open{border-color:var(--bdrs)}
+.acc-head{padding:15px 19px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;background:var(--card);user-select:none}
+.acc-head:hover{background:var(--card2)}
+.acc-head h3{font-family:'Playfair Display',serif;font-size:.97rem;color:var(--cream);flex:1;pointer-events:none}
+.acc-arr{width:20px;height:20px;border:1px solid var(--bdr);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.65rem;color:var(--gold);flex-shrink:0;transition:transform .3s;pointer-events:none}
+.acc.open .acc-arr{transform:rotate(180deg)}
+.acc-body{display:none;padding:0 19px 19px;background:var(--card);font-size:.86rem;color:var(--muted);line-height:1.8}
+.acc.open .acc-body{display:block}
+/* PLANTS */
+.pg{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:11px}
+.pc{background:var(--card);border:1px solid var(--bdr);border-left:3px solid var(--gold);border-radius:0 5px 5px 0;padding:16px 18px}
+.pcn{font-family:'Playfair Display',serif;font-size:.93rem;color:var(--gpale);margin-bottom:6px}
+.pcd{font-size:.82rem;color:var(--muted);line-height:1.65}
+.capas-row{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;margin-bottom:20px}
+@media(max-width:500px){.capas-row{grid-template-columns:1fr}}
+.capa-c{background:var(--card);border:1px solid var(--bdr);border-radius:6px;padding:16px 12px;text-align:center}
+.ci{font-size:1.55rem;margin-bottom:7px;display:block}
+.cn{font-family:'Playfair Display',serif;font-size:.84rem;color:var(--gpale);margin-bottom:4px}
+.cd{font-size:.76rem;color:var(--muted);line-height:1.6}
+/* EMOTIONS */
+.emo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+.emo-btn{background:var(--card);border:1px solid var(--bdr);border-radius:8px;padding:18px 14px;text-align:center;cursor:pointer;transition:all .3s;user-select:none}
+.emo-btn.on{border-color:var(--bdrs);background:var(--card2)}
+.emo-btn:hover{border-color:rgba(200,160,64,.28);transform:translateY(-2px)}
+.emo-em{font-size:1.65rem;display:block;margin-bottom:6px;pointer-events:none}
+.emo-lbl{font-family:'Playfair Display',serif;font-size:.84rem;color:var(--cream);line-height:1.3;pointer-events:none}
+.emo-detail{background:var(--card2);border:1px solid var(--bdrs);border-radius:8px;padding:22px 26px;margin-top:11px;display:none}
+.emo-detail.on{display:block;animation:fi .3s ease}
+.emo-detail h3{font-family:'Playfair Display',serif;font-size:1.18rem;color:var(--gpale);margin-bottom:8px}
+.emo-estado{font-size:.8rem;color:var(--muted);font-style:italic;margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid var(--bdr)}
+.emo-detail p{font-size:.86rem;color:var(--muted);line-height:1.75;margin-bottom:10px}
+.receta{background:rgba(200,160,64,.07);border:1px solid rgba(200,160,64,.2);border-radius:4px;padding:12px 16px}
+.receta strong{display:block;font-size:.64rem;letter-spacing:.17em;text-transform:uppercase;color:var(--gold);margin-bottom:5px}
+.receta p{font-size:.84rem;color:var(--gpale);margin:0}
+/* LUNA */
+.luna-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-bottom:14px}
+@media(max-width:480px){.luna-grid{grid-template-columns:repeat(2,1fr)}}
+.luna-btn{background:var(--card);border:1px solid var(--bdr);border-radius:8px;padding:15px 10px;text-align:center;cursor:pointer;transition:all .3s;user-select:none}
+.luna-btn:hover,.luna-btn.on{border-color:var(--bdrs);background:var(--card2)}
+.luna-icon{font-size:1.65rem;display:block;margin-bottom:6px;pointer-events:none}
+.luna-name{font-size:.74rem;color:var(--muted);font-family:'Playfair Display',serif;pointer-events:none}
+.luna-detail{background:var(--card2);border:1px solid var(--bdrs);border-radius:8px;padding:22px 24px;margin-bottom:30px;display:none}
+.luna-detail.on{display:block;animation:fi .3s ease}
+.luna-detail h3{font-family:'Playfair Display',serif;font-size:1.18rem;color:var(--gpale);margin-bottom:8px}
+.luna-detail p{font-size:.86rem;color:var(--muted);line-height:1.75;margin-bottom:8px}
+.luna-detail p:last-child{margin:0}
+/* ESTACIONES */
+.est-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(205px,1fr));gap:10px}
+.est-card{background:var(--card);border:1px solid var(--bdr);border-radius:6px;padding:16px 14px;cursor:pointer;transition:all .3s}
+.est-card:hover,.est-card.on{border-color:var(--bdrs);background:var(--card2)}
+.est-head{display:flex;align-items:center;gap:9px;pointer-events:none}
+.est-icon{font-size:1.4rem;flex-shrink:0}
+.est-name{font-family:'Playfair Display',serif;font-size:.87rem;color:var(--cream)}
+.est-date{font-size:.68rem;color:var(--muted)}
+.est-body{margin-top:11px;display:none}
+.est-card.on .est-body{display:block;animation:fi .3s ease}
+.est-body p{font-size:.81rem;color:var(--muted);line-height:1.65;margin-bottom:6px}
+/* KITS */
+.kit-detail{background:var(--card2);border:1px solid var(--bdrs);border-radius:8px;padding:24px}
+.kit-detail h3{font-family:'Playfair Display',serif;font-size:1.22rem;color:var(--gpale);margin-bottom:12px}
+.kit-list{list-style:none;margin-bottom:13px}
+.kit-list li{padding:7px 0;border-bottom:1px solid rgba(200,160,64,.08);font-size:.85rem;color:var(--muted);padding-left:15px;position:relative}
+.kit-list li::before{content:"\2192";position:absolute;left:0;color:var(--gold)}
+.kit-list li:last-child{border-bottom:none}
+.pack-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:15px}
+.pack-opt{background:var(--card);border:1px solid var(--bdr);border-radius:6px;padding:13px;text-align:center}
+.poi{font-size:1.35rem;margin-bottom:6px;display:block}
+.pon{font-size:.76rem;color:var(--cream);font-weight:600;margin-bottom:3px}
+.pod{font-size:.71rem;color:var(--muted)}
+/* PROVEEDORES */
+.prov-list{background:var(--card);border:1px solid var(--bdr);border-radius:8px;overflow:hidden}
+.prov-item{padding:14px 19px;border-bottom:1px solid rgba(200,160,64,.07);display:flex;gap:11px;align-items:flex-start}
+.prov-item:last-child{border-bottom:none}
+.pdot{width:7px;height:7px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:5px}
+.pname{font-weight:700;color:var(--cream);font-size:.86rem;margin-bottom:2px}
+.pinfo{font-size:.78rem;color:var(--muted)}
+.plink{font-size:.74rem;color:var(--gold);font-weight:600}
+/* RETO */
+.reto-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:10px}
+.dia-card{background:var(--card);border:1px solid var(--bdr);border-radius:8px;overflow:hidden;transition:border-color .3s}
+.dia-card:hover{border-color:rgba(200,160,64,.28)}
+.dia-card.done{border-color:rgba(74,222,128,.4)}
+.dia-head{padding:14px 15px;display:flex;align-items:center;gap:10px;cursor:pointer;user-select:none}
+.dia-n{width:31px;height:31px;border-radius:50%;background:var(--card2);border:2px solid var(--bdr);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:.9rem;color:var(--gold);font-weight:700;flex-shrink:0;transition:all .3s;pointer-events:none}
+.dia-card.done .dia-n{background:linear-gradient(135deg,#1a3d2e,#1d5c3b);border-color:rgba(74,222,128,.5);color:#4ade80}
+.dia-info{flex:1;pointer-events:none}
+.dia-lbl{font-size:.61rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+.dia-tit{font-family:'Playfair Display',serif;font-size:.9rem;color:var(--cream)}
+.dia-chk{width:19px;height:19px;border-radius:50%;border:2px solid var(--bdr);display:flex;align-items:center;justify-content:center;font-size:.68rem;color:transparent;transition:all .3s;flex-shrink:0;pointer-events:none}
+.dia-card.done .dia-chk{border-color:#4ade80;color:#4ade80;background:rgba(74,222,128,.1)}
+.dia-body{padding:0 15px;max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s}
+.dia-card.open .dia-body{max-height:220px;padding:0 15px 14px}
+.dia-body p{font-size:.81rem;color:var(--muted);line-height:1.68}
+.dia-mark{margin-top:11px;padding:6px 15px;background:transparent;border:1px solid var(--bdr);border-radius:17px;font-size:.73rem;color:var(--muted);cursor:pointer;font-family:'Nunito',sans-serif;font-weight:600;transition:all .3s;display:block}
+.dia-mark:hover{border-color:var(--gold);color:var(--gbright)}
+.prog-bar{height:4px;background:var(--bdr);margin:13px 0 4px;border-radius:2px;overflow:hidden}
+.prog-fill{height:100%;background:linear-gradient(to right,var(--purple),var(--gbright));border-radius:2px;transition:width .6s ease}
+/* NEGOCIO */
+.neg-content{background:var(--card);border:1px solid var(--bdr);border-radius:8px;padding:24px}
+.ficha-table{width:100%;border-collapse:collapse;margin-top:8px}
+.ficha-table tr{border-bottom:1px solid rgba(200,160,64,.08)}
+.ficha-table tr:last-child{border:none}
+.ficha-table td{padding:8px 0;font-size:.83rem;vertical-align:top}
+.ficha-table td:first-child{color:var(--gold);font-weight:700;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;width:122px;padding-right:12px}
+.ficha-table td:last-child{color:var(--muted)}
+.formula-big{text-align:center;padding:24px;background:var(--card2);border:1px solid var(--bdrs);border-radius:8px;margin-top:12px}
+.formula-big p{font-size:.67rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.fml{font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--cream);font-style:italic}
+.formula-big small{display:block;margin-top:8px;font-size:.78rem;color:var(--muted)}
+.com-card{background:var(--card2);border-left:3px solid var(--purple);padding:14px 18px;margin-bottom:9px;border-radius:0 5px 5px 0}
+.com-frase{font-family:'Playfair Display',serif;font-style:italic;font-size:.91rem;color:var(--gpale);margin-bottom:4px}
+.com-nota{font-size:.76rem;color:var(--muted)}
+/* MENTALIDAD */
+.mental-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-bottom:36px}
+.mc{background:var(--card);border:1px solid var(--bdr);border-radius:8px;padding:25px 23px;cursor:pointer;transition:border-color .3s;position:relative;overflow:hidden}
+.mc::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(to right,var(--purple),var(--gbright),transparent);transform:scaleX(0);transform-origin:left;transition:transform .4s}
+.mc:hover,.mc.open{border-color:rgba(107,62,114,.4)}
+.mc.open::after,.mc:hover::after{transform:scaleX(1)}
+.mc-head{display:flex;align-items:flex-start;justify-content:space-between;gap:9px;pointer-events:none}
+.mc-head h3{font-family:'Playfair Display',serif;font-size:1rem;color:var(--cream);line-height:1.35;flex:1}
+.mc-arr{width:20px;height:20px;border:1px solid var(--bdr);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.65rem;color:var(--gold);flex-shrink:0;transition:transform .3s}
+.mc.open .mc-arr{transform:rotate(180deg)}
+.mc-body{max-height:0;overflow:hidden;transition:max-height .45s ease,margin .3s}
+.mc.open .mc-body{max-height:350px;margin-top:14px}
+.mc-body p{font-size:.84rem;color:var(--muted);line-height:1.8;margin-bottom:10px}
+.mc-body p:last-child{margin:0}
+.mc-quote{background:rgba(107,62,114,.16);border:1px solid rgba(107,62,114,.32);border-radius:4px;padding:12px 15px;margin-top:10px}
+.mc-quote strong{display:block;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--pmid);margin-bottom:5px}
+.mc-quote p{font-size:.8rem;font-style:italic;color:var(--ppale);margin:0}
+/* CHAT */
+.chat-wrap{background:var(--bg2);padding:66px 24px}
+.chat-inner{max-width:710px;margin:0 auto}
+.chat-hdr{text-align:center;margin-bottom:24px}
+.chat-hdr h2{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3.2vw,2rem);color:var(--cream);margin-bottom:8px}
+.chat-hdr p{color:var(--muted);font-size:.85rem;max-width:410px;margin:0 auto}
+.chat-box{background:var(--card);border:1px solid var(--bdr);border-radius:10px;overflow:hidden}
+.chat-top{background:var(--card2);padding:12px 18px;border-bottom:1px solid var(--bdr);display:flex;align-items:center;gap:8px}
+.cdot{width:7px;height:7px;border-radius:50%;background:#4ade80;animation:pg 2s infinite}
+@keyframes pg{0%,100%{box-shadow:0 0 0 0 rgba(74,222,128,.4)}50%{box-shadow:0 0 0 5px rgba(74,222,128,0)}}
+.ctitle{font-family:'Playfair Display',serif;font-size:.86rem;color:var(--gpale);flex:1}
+.csub{font-size:.67rem;color:var(--muted)}
+.c-msgs{height:350px;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;scroll-behavior:smooth}
+.c-msgs::-webkit-scrollbar{width:3px}
+.c-msgs::-webkit-scrollbar-thumb{background:var(--bdr);border-radius:2px}
+.cmsg{display:flex;gap:8px;max-width:88%}
+.cmsg.u{align-self:flex-end;flex-direction:row-reverse}
+.cav{width:26px;height:26px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.76rem;margin-top:3px}
+.cmsg.a .cav{background:linear-gradient(135deg,var(--purple),#8e35a0)}
+.cmsg.u .cav{background:var(--card2);border:1px solid var(--bdr)}
+.cbb{padding:10px 14px;font-size:.84rem;line-height:1.65}
+.cmsg.a .cbb{background:var(--card2);border:1px solid var(--bdr);color:var(--cream);border-radius:4px 10px 10px 4px}
+.cmsg.u .cbb{background:linear-gradient(135deg,var(--purple),rgba(107,62,114,.5));color:var(--cream);border-radius:10px 4px 4px 10px}
+.typing{display:flex;gap:4px;padding:4px 0}
+.typing span{width:5px;height:5px;border-radius:50%;background:var(--gold);animation:td 1.4s infinite}
+.typing span:nth-child(2){animation-delay:.2s}
+.typing span:nth-child(3){animation-delay:.4s}
+@keyframes td{0%,60%,100%{transform:translateY(0);opacity:.4}30%{transform:translateY(-5px);opacity:1}}
+.c-input-area{padding:13px 16px;border-top:1px solid var(--bdr);background:var(--card2)}
+.c-sugg{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.sug{padding:5px 11px;background:var(--bg2);border:1px solid var(--bdr);border-radius:15px;font-size:.71rem;color:var(--muted);cursor:pointer;transition:all .2s;font-family:'Nunito',sans-serif}
+.sug:hover{border-color:var(--gold);color:var(--gbright)}
+.c-form{display:flex;gap:8px}
+.c-inp{flex:1;background:var(--bg2);border:1px solid var(--bdr);border-radius:4px;padding:9px 12px;color:var(--cream);font-family:'Nunito',sans-serif;font-size:.84rem;outline:none;transition:border-color .2s;resize:none;min-height:38px;max-height:90px}
+.c-inp::placeholder{color:var(--muted);opacity:.6}
+.c-inp:focus{border-color:var(--gold)}
+.c-send{padding:9px 15px;background:linear-gradient(135deg,var(--purple),#8e35a0);border:none;border-radius:4px;color:var(--cream);font-family:'Nunito',sans-serif;font-weight:700;font-size:.78rem;cursor:pointer;transition:opacity .2s,transform .2s;flex-shrink:0}
+.c-send:hover{opacity:.9;transform:translateY(-1px)}
+.c-send:disabled{opacity:.45;cursor:not-allowed;transform:none}
+.c-disc{text-align:center;font-size:.67rem;color:var(--muted);opacity:.5;margin-top:9px}
+footer{border-top:1px solid var(--bdr);padding:32px 24px;text-align:center;background:var(--bg2)}
+.flogo{font-family:'Playfair Display',serif;font-size:1.18rem;font-style:italic;color:var(--gbright);margin-bottom:7px}
+footer p{font-size:.72rem;color:var(--muted);opacity:.55}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Aromas que Venden al Mundo</div>
+  <ul class="nav-links">
+    <li><a href="#mapa">Programa</a></li>
+    <li><a href="#productos">Productos</a></li>
+    <li><a href="#b1">Bono 1</a></li>
+    <li><a href="#b2">Bono 2</a></li>
+    <li><a href="#b3">Bono 3</a></li>
+    <li><a href="#b4">Bono 4</a></li>
+    <li><a href="#b5">Bono 5</a></li>
+    <li><a href="#b6">Bono 6</a></li>
+    <li><a href="#b7">Bono 7</a></li>
+    <li><a href="#b8">Bono 8</a></li>
+    <li><a href="#chat">Chat</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <svg class="smoke-svg" viewBox="0 0 280 440" xmlns="http://www.w3.org/2000/svg">
+    <path class="sp sp1" d="M140 435 C142 382,124 338,138 282 C152 228,130 186,142 136 C154 88,130 50,138 14"/>
+    <path class="sp sp2" d="M152 435 C172 382,193 340,177 288 C161 238,187 194,172 144 C157 97,180 60,174 22"/>
+    <path class="sp sp3" d="M128 435 C108 382,87 338,105 284 C123 232,97 190,113 138 C129 90,105 52,113 18"/>
+    <path class="sp sp4" d="M148 435 C174 394,197 360,181 312 C165 268,191 230,177 184 C163 142,185 106,179 64"/>
+    <path class="sp sp5" d="M134 435 C110 394,89 358,107 310 C125 264,99 228,115 180 C131 138,107 102,113 62"/>
+  </svg>
+  <div class="hero-content">
+    <div class="h-eye">El manifiesto de la alquimista del humo</div>
+    <h1 class="h-title">El fuego sagrado<br><em>empieza en tus manos</em></h1>
+    <p class="h-sub">Aprendé a crear, perfeccionar y vender humo sagrado artesanal. Un oficio ancestral con herramientas del presente.</p>
+    <div class="h-cta">
+      <a href="#mapa" class="btn-p">Explorar el programa</a>
+      <a href="#chat" class="btn-g">Consultá a la alquimista</a>
+    </div>
+  </div>
+</section>
+
+<section class="quotes">
+  <div class="q-wrap"><div class="q-text" id="qT"></div><div class="q-auth" id="qA"></div></div>
+  <div class="q-dots" id="qD"></div>
+</section>
+
+<section id="mapa" class="map-sec">
+  <div class="map-center">
+    <div class="eyebrow">Navegá el programa</div>
+    <h2 class="sec-title" style="margin-bottom:6px">Por donde</h2>
+    <h2 class="sec-title"><em>empezas hoy?</em></h2>
+    <p style="color:var(--muted);font-size:.87rem;margin-top:8px">Toca cualquier seccion y vas directo ahi.</p>
+  </div>
+  <div class="map-grid">
+    <a href="#productos" class="map-card"><span class="map-icon">&#x1FAB5;</span><div class="map-bono">Ebook</div><div class="map-title">Los 6 productos del humo sagrado</div></a>
+    <a href="#b1" class="map-card"><span class="map-icon">&#x1F32C;&#xFE0F;</span><div class="map-bono">Bono 1</div><div class="map-title">El humo que sana</div></a>
+    <a href="#b2" class="map-card"><span class="map-icon">&#x1F33F;</span><div class="map-bono">Bono 2</div><div class="map-title">El jardin del fuego</div></a>
+    <a href="#b3" class="map-card"><span class="map-icon">&#x1F49C;</span><div class="map-bono">Bono 3</div><div class="map-title">Aromas que sienten</div></a>
+    <a href="#b4" class="map-card"><span class="map-icon">&#x1F319;</span><div class="map-bono">Bono 4</div><div class="map-title">El fuego y los ciclos</div></a>
+    <a href="#b5" class="map-card"><span class="map-icon">&#x1F381;</span><div class="map-bono">Bono 5</div><div class="map-title">Kits que enamoran</div></a>
+    <a href="#b6" class="map-card"><span class="map-icon">&#x1F5FA;&#xFE0F;</span><div class="map-bono">Bono 6</div><div class="map-title">Proveedores argentinos</div></a>
+    <a href="#b7" class="map-card"><span class="map-icon">&#x1F525;</span><div class="map-bono">Bono 7</div><div class="map-title">Primera venta en 7 dias</div></a>
+    <a href="#b8" class="map-card"><span class="map-icon">&#x2728;</span><div class="map-bono">Bono 8</div><div class="map-title">Mentalidad: la alquimista que vende</div></a>
+    <a href="#chat" class="map-card"><span class="map-icon">&#x1F4AC;</span><div class="map-bono">Chat</div><div class="map-title">Consulta a la alquimista del humo</div></a>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PRODUCTOS -->
+<section id="productos">
+<div class="sec">
+  <div class="eyebrow">Ebook</div>
+  <h2 class="sec-title">Los seis productos<br><em>que vas a aprender a crear</em></h2>
+  <p class="sec-lead">Toca cada producto para ver el proceso completo.</p>
+  <div class="tab-row">
+    <button class="tb on" onclick="swTab(this,'pd','pd0')">&#x1FAB5; Con palillo</button>
+    <button class="tb" onclick="swTab(this,'pd','pd1')">&#x2728; Sin palillo</button>
+    <button class="tb" onclick="swTab(this,'pd','pd2')">&#x1F53A; Conos clasicos</button>
+    <button class="tb" onclick="swTab(this,'pd','pd3')">&#x1F30A; Flujo inverso</button>
+    <button class="tb" onclick="swTab(this,'pd','pd4')">&#x1F33F; Sahumos sueltos</button>
+    <button class="tb" onclick="swTab(this,'pd','pd5')">&#x1F4A7; Bombas de humo</button>
+  </div>
+  <div id="pd0" class="panel on">
+    <div class="prod-card">
+      <div class="p-num">01</div>
+      <div class="prod-grid">
+        <div>
+          <span class="p-ico">&#x1FAB5;</span>
+          <div class="p-name">Sahumerio en barra con palillo</div>
+          <p class="p-desc">El mas familiar del mercado. Mezcla aromatica enrollada en un palillo de bambu. El mas vendible para comenzar tu catalogo.</p>
+          <span class="p-tag">Punto de entrada</span>
+        </div>
+        <div class="p-props">
+          <h4>Proporciones y proceso</h4>
+          <ul class="prop-list">
+            <li><span class="lk">Polvo base</span>60g de sandalo, cedro o la mezcla elegida</li>
+            <li><span class="lk">Makko</span>20g, el aglutinante principal</li>
+            <li><span class="lk">Resinas</span>10g en polvo</li>
+            <li><span class="lk">Agua</span>15 a 25ml hasta consistencia de plastilina firme</li>
+            <li><span class="lk">Aceites</span>5 a 9g (5-10% del peso seco)</li>
+            <li><span class="lk">Secado</span>24 a 72hs vertical con la punta hacia arriba</li>
+            <li><span class="lk">Rinde</span>Aprox. 20 sahumerios por tanda</li>
+          </ul>
+          <div class="tip-box">Si se agrieta al secar: le falto agua. Si se apaga solo: demasiado makko o no esta completamente seco.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="pd1" class="panel">
+    <div class="prod-card">
+      <div class="p-num">02</div>
+      <div class="prod-grid">
+        <div>
+          <span class="p-ico">&#x2728;</span>
+          <div class="p-name">Sahumerio sin palillo (Masala)</div>
+          <p class="p-desc">Toda la barra es fragancia. Humo mas puro, mas rico y mas complejo. Tecnicamente mas exigente pero mas valorado en el mercado.</p>
+          <span class="p-tag">Linea pura</span>
+        </div>
+        <div class="p-props">
+          <h4>Proporciones y proceso</h4>
+          <ul class="prop-list">
+            <li><span class="lk">Makko</span>Proporcion mayor que los de palillo para cohesion sin soporte</li>
+            <li><span class="lk">Forma</span>Rodar sobre la superficie con la palma hasta 15-20cm, 4-5mm de diametro</li>
+            <li><span class="lk">Secado</span>48 a 96hs, girar cada 12hs para evitar que se aplanen</li>
+            <li><span class="lk">Opcion</span>Bases de incienso preparadas en polvo con aglutinante incorporado</li>
+          </ul>
+          <div class="tip-box">Girar los sahumerios cada 12 horas durante el secado para que no se aplanen del lado en que reposan.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="pd2" class="panel">
+    <div class="prod-card">
+      <div class="p-num">03</div>
+      <div class="prod-grid">
+        <div>
+          <span class="p-ico">&#x1F53A;</span>
+          <div class="p-name">Conos clasicos</div>
+          <p class="p-desc">Forma conica compacta. Combustion mas rapida y concentrada que las barras. Ideal para quienes buscan intensidad inmediata.</p>
+          <span class="p-tag">Intensidad</span>
+        </div>
+        <div class="p-props">
+          <h4>Proporciones y proceso</h4>
+          <ul class="prop-list">
+            <li><span class="lk">Polvo</span>6 partes</li>
+            <li><span class="lk">Makko</span>3 partes</li>
+            <li><span class="lk">Resinas</span>1 parte</li>
+            <li><span class="lk">Aceites</span>5 a 10% del peso seco total</li>
+            <li><span class="lk">Base</span>Plana y estable de 1,5 a 2cm de diametro</li>
+            <li><span class="lk">Altura</span>2,5 a 3cm con punta bien formada</li>
+            <li><span class="lk">Secado</span>48 a 72hs sobre papel de horno, base hacia abajo</li>
+          </ul>
+          <div class="tip-box">Un cono con la base despareja no se apoya bien y puede volcarse durante la quema. La uniformidad es funcional, no solo estetica.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="pd3" class="panel">
+    <div class="prod-card">
+      <div class="p-num">04</div>
+      <div class="prod-grid">
+        <div>
+          <span class="p-ico">&#x1F30A;</span>
+          <div class="p-name">Conos de flujo inverso</div>
+          <p class="p-desc">El mas fotografico. Un canal interno hueco invierte el humo: en lugar de subir, cae creando un efecto de cascada irresistible.</p>
+          <span class="p-tag">Viral</span>
+        </div>
+        <div class="p-props">
+          <h4>Proporciones y proceso</h4>
+          <ul class="prop-list">
+            <li><span class="lk">Base</span>Igual que conos clasicos</li>
+            <li><span class="lk">Canal</span>Aguja de 1,5 a 2mm de la punta a la base del cono</li>
+            <li><span class="lk">Quemador</span>Requiere quemadores especificos: montana, dragon, fuente</li>
+            <li><span class="lk">Efecto</span>Humo denso que cae hacia el quemador</li>
+            <li><span class="lk">Contenido</span>3-10 segundos del efecto cascada es el video mas efectivo para vender</li>
+          </ul>
+          <div class="tip-box">Si no produce el efecto: el canal puede estar obstruido o ser demasiado estrecho. Verificar tambien que el quemador sea especificamente para flujo inverso.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="pd4" class="panel">
+    <div class="prod-card">
+      <div class="p-num">05</div>
+      <div class="prod-grid">
+        <div>
+          <span class="p-ico">&#x1F33F;</span>
+          <div class="p-name">Sahumos sueltos</div>
+          <p class="p-desc">Los mas ancestrales. Sin forma ni aglutinante: solo la mezcla botanica que se quema sobre pastilla de carbon vegetal.</p>
+          <span class="p-tag">Ancestral</span>
+        </div>
+        <div class="p-props">
+          <h4>Proporciones y proceso</h4>
+          <ul class="prop-list">
+            <li><span class="lk">Hierbas</span>50 a 60% de la mezcla</li>
+            <li><span class="lk">Resinas</span>20 a 30%</li>
+            <li><span class="lk">Flores</span>10 a 20%</li>
+            <li><span class="lk">Aceites</span>Opcionales, unas gotas para amplificar</li>
+            <li><span class="lk">Cantidad</span>Media a una cucharadita sobre el carbon encendido</li>
+            <li><span class="lk">Conservar</span>Frasco de vidrio hermetico, duran anos</li>
+          </ul>
+          <div class="tip-box">Esperar a que toda la superficie del carbon este cubierta de ceniza gris antes de colocar la mezcla. Si el humo es muy intenso, reducir la cantidad.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="pd5" class="panel">
+    <div class="prod-card">
+      <div class="p-num">06</div>
+      <div class="prod-grid">
+        <div>
+          <span class="p-ico">&#x1F4A7;</span>
+          <div class="p-name">Bombas de humo aromaticas</div>
+          <p class="p-desc">Esferas que al contacto con agua caliente liberan vapor aromatico denso. El ritual transformado en experiencia sensorial del bano.</p>
+          <span class="p-tag">Ritual de bano</span>
+        </div>
+        <div class="p-props">
+          <h4>Proporciones y proceso</h4>
+          <ul class="prop-list">
+            <li><span class="lk">Bicarbonato</span>2 partes</li>
+            <li><span class="lk">Acido citrico</span>1 parte</li>
+            <li><span class="lk">Maicena</span>1 parte</li>
+            <li><span class="lk">Aceites</span>3 a 5% del peso total, alta concentracion</li>
+            <li><span class="lk">Aceite veg.</span>1 a 2% para cohesion</li>
+            <li><span class="lk">CRITICO</span>Agregar liquidos gota a gota o la bomba se activa en el molde</li>
+            <li><span class="lk">Secado</span>1hs en molde minimo, luego 24hs al aire</li>
+          </ul>
+          <div class="tip-box">Trabajar en ambiente seco. Si la bomba se rompe al desmoldar: necesito mas tiempo en el molde o tenia demasiados ingredientes liquidos.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- BONO 1 -->
+<section id="b1" class="sec-bg">
+<div class="sec-wrap">
+  <div class="eyebrow">Bono 1</div>
+  <h2 class="sec-title">El humo que sana:<br><em>ciencia y ritual</em></h2>
+  <p class="sec-lead">Toca cada tema para expandirlo.</p>
+  <div class="acc" onclick="togAcc(this)">
+    <div class="acc-head"><h3>Por que el humo limpia de manera diferente</h3><div class="acc-arr">&#x25BC;</div></div>
+    <div class="acc-body">
+      <p>Las moleculas aromaticas van suspendidas en particulas de carbono que penetran superficies porosas, se adhieren a textiles y llegan a rincones inaccesibles. El agua limpia lo que se toca. El humo limpia lo que se siente.</p>
+      <p><strong style="color:var(--cream)">Efecto fisico:</strong> La salvia blanca tiene propiedades antibacterianas comprobadas. El incienso muestra efectos documentados sobre ansiedad y estado de animo.</p>
+      <p><strong style="color:var(--cream)">Efecto energetico:</strong> El humo llega donde ningun otro aromatizante llega: a los rincones donde la energia se acumula, a los textiles que absorben las emociones.</p>
+    </div>
+  </div>
+  <div class="acc" onclick="togAcc(this)">
+    <div class="acc-head"><h3>Las plantas de la purificacion</h3><div class="acc-arr">&#x25BC;</div></div>
+    <div class="acc-body">
+      <div class="pg" style="margin-top:8px">
+        <div class="pc"><div class="pcn">Salvia blanca (Salvia apiana)</div><p class="pcd">La mas conocida en el holistico moderno. Propiedades antibacterianas comprobadas. La purificadora mas activa e intensa.</p></div>
+        <div class="pc"><div class="pcn">Palo santo (Bursera graveolens)</div><p class="pcd">La madera sagrada de los Andes. Purifica de manera suave y dulce. No solo saca: tambien invita y llama.</p></div>
+        <div class="pc"><div class="pcn">Enebro (Juniperus communis)</div><p class="pcd">Tradicion ritual europea. Fresco y forestal. Para espacios que necesitan proteccion duradera.</p></div>
+        <div class="pc"><div class="pcn">Romero (Rosmarinus)</div><p class="pcd">Activa y renueva la energia. Como abrir todas las ventanas de golpe.</p></div>
+        <div class="pc"><div class="pcn">Cedro (Cedrus)</div><p class="pcd">Purifica y protege. Crea solidez y limite que dificulta el regreso de lo que se fue.</p></div>
+        <div class="pc"><div class="pcn">Ruda (Ruta graveolens)</div><p class="pcd">La planta de proteccion argentina por excelencia. Una hoja de ruda en cualquier mezcla es enraizamiento en la tradicion local.</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="acc" onclick="togAcc(this)">
+    <div class="acc-head"><h3>Ritual de purificacion paso a paso</h3><div class="acc-arr">&#x25BC;</div></div>
+    <div class="acc-body">
+      <p style="margin-bottom:12px"><strong style="color:var(--cream)">Cuando hacerlo:</strong> despues de discusiones, visitas dificiles, mudanzas, enfermedad o como mantenimiento regular (luna nueva o semanal).</p>
+      <p>1 - Abris una ventana en el espacio.<br>
+      2 - Encendes el sahumerio y esperas que el humo fluya continuo.<br>
+      3 - Empezes desde la entrada en sentido contrario a las agujas del reloj.<br>
+      4 - Atencion especial a los rincones superiores (pared-techo).<br>
+      5 - Mantenes la intencion clara durante todo el recorrido.<br>
+      6 - Vuelves a la entrada y cerras el recorrido.<br>
+      7 - Dejas la ventana abierta unos minutos mas.</p>
+    </div>
+  </div>
+  <div class="acc" onclick="togAcc(this)">
+    <div class="acc-head"><h3>Purificacion de personas y objetos</h3><div class="acc-arr">&#x25BC;</div></div>
+    <div class="acc-body">
+      <p><strong style="color:var(--cream)">Personas:</strong> Se recorre el contorno del cuerpo a 15-20cm, de la cabeza hasta los pies.</p>
+      <p><strong style="color:var(--cream)">Objetos:</strong> Se pasan por el humo o se deja que el humo los envuelva unos minutos. Util para cristales recien llegados u objetos de otros espacios.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- BONO 2 -->
+<section id="b2">
+<div class="sec">
+  <div class="eyebrow">Bono 2</div>
+  <h2 class="sec-title">El jardin del fuego:<br><em>plantas y resinas sagradas</em></h2>
+  <p class="sec-lead">Selecciona una categoria para explorar cada ingrediente.</p>
+  <div class="capas-row">
+    <div class="capa-c"><span class="ci">&#x1F4A8;</span><div class="cn">Capa 1 - Inmediato</div><p class="cd">Hierbas: lavanda, romero, salvia, ruda, artemisa.</p></div>
+    <div class="capa-c"><span class="ci">&#x1F311;</span><div class="cn">Capa 2 - Sostenido</div><p class="cd">Resinas: incienso, mirra, copal, benjui, sangre de dragon.</p></div>
+    <div class="capa-c"><span class="ci">&#x2693;</span><div class="cn">Capa 3 - El ancla</div><p class="cd">Maderas: cedro, palo santo, sandalo, enebro.</p></div>
+  </div>
+  <div class="tab-row">
+    <button class="tb gold on" onclick="swTab(this,'b2p','b2p0')">Hierbas</button>
+    <button class="tb gold" onclick="swTab(this,'b2p','b2p1')">Resinas</button>
+    <button class="tb gold" onclick="swTab(this,'b2p','b2p2')">Maderas</button>
+    <button class="tb gold" onclick="swTab(this,'b2p','b2p3')">Como combinar</button>
+  </div>
+  <div id="b2p0" class="panel on">
+    <div class="pg">
+      <div class="pc"><div class="pcn">Lavanda</div><p class="pcd">La mas versatil. Suaviza aromas fuertes y aporta calma. Funciona en practicamente cualquier mezcla.</p></div>
+      <div class="pc"><div class="pcn">Salvia comun</div><p class="pcd">La planta del conocimiento en la tradicion europea. Mas oscura que la salvia blanca. Con incienso para claridad espiritual.</p></div>
+      <div class="pc"><div class="pcn">Artemisa</div><p class="pcd">La planta de los suenos. Aroma intenso y herbal. Para meditacion profunda y rituales nocturnos.</p></div>
+      <div class="pc"><div class="pcn">Romero</div><p class="pcd">Activa y mueve. Para espacios que necesitan renovacion intensa de su energia.</p></div>
+      <div class="pc"><div class="pcn">Ruda</div><p class="pcd">Proteccion argentina por excelencia. Fuerte y herbal. Enraiza en la tradicion local.</p></div>
+      <div class="pc"><div class="pcn">Canela</div><p class="pcd">Calida, dulce, especiada. Asociada con la prosperidad. Energia expansiva y caliente.</p></div>
+    </div>
+  </div>
+  <div id="b2p1" class="panel">
+    <div class="pg">
+      <div class="pc"><div class="pcn">Incienso (Boswellia)</div><p class="pcd">El aroma sagrado mas universal. Efectos documentados sobre ansiedad y estado de animo. El mas versatil: funciona solo y con todo.</p></div>
+      <div class="pc"><div class="pcn">Mirra</div><p class="pcd">Si el incienso es el vuelo, la mirra es el arraigo. El ancla de cualquier mezcla: da peso, profundidad y duracion.</p></div>
+      <div class="pc"><div class="pcn">Copal (Bursera)</div><p class="pcd">La resina sagrada de Mesoamerica. En el Dia de los Muertos guia a los ancestros. Frescura resinosa.</p></div>
+      <div class="pc"><div class="pcn">Benjui (Styrax)</div><p class="pcd">Dulce, vainillado, calido. Activa la respuesta de seguridad en el sistema nervioso. Muy accesible.</p></div>
+      <div class="pc"><div class="pcn">Sangre de dragon</div><p class="pcd">Roja, dramatica, intensa. Usar en pequenas proporciones. Proteccion maxima y transformacion profunda.</p></div>
+    </div>
+  </div>
+  <div id="b2p2" class="panel">
+    <div class="pg">
+      <div class="pc"><div class="pcn">Palo santo</div><p class="pcd">Dulce, amaderado. Purifica suavemente. No solo saca: tambien invita y llama.</p></div>
+      <div class="pc"><div class="pcn">Cedro</div><p class="pcd">Purifica y protege. Crea solidez y limite. El ancla de las mezclas de proteccion.</p></div>
+      <div class="pc"><div class="pcn">Enebro</div><p class="pcd">Fresco, forestal. El purificador-protector de la tradicion europea. Para proteccion duradera.</p></div>
+      <div class="pc"><div class="pcn">Sandalo</div><p class="pcd">Calido y meditativo. Usado en tradiciones espirituales de todo el mundo. Excelente ancla para la calma.</p></div>
+    </div>
+  </div>
+  <div id="b2p3" class="panel">
+    <div style="background:var(--card);border:1px solid var(--bdr);border-radius:8px;padding:24px">
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--gpale);margin-bottom:12px">Proporciones ideales</h3>
+      <p style="font-size:.86rem;color:var(--muted);line-height:1.8;margin-bottom:16px">La mezcla ideal tiene las tres capas: <strong style="color:var(--cream)">50-60% hierbas</strong> (aroma inmediato) + <strong style="color:var(--cream)">20-30% resinas</strong> (profundidad y duracion) + <strong style="color:var(--cream)">10-20% maderas</strong> (lo que permanece al final).</p>
+      <div class="acc" onclick="togAcc(this)">
+        <div class="acc-head"><h3 style="font-size:.9rem">Ver combinaciones especificas</h3><div class="acc-arr">&#x25BC;</div></div>
+        <div class="acc-body">
+          <p>Lavanda + incienso + cedro = purificacion suave y elevada</p>
+          <p>Salvia + enebro + mirra = proteccion profunda</p>
+          <p>Rosa + benjui + sandalo = amor propio y autocuidado</p>
+          <p>Romero + cedro + incienso = renovacion y claridad</p>
+          <p>Copal + incienso + artemisa = ritual de umbral y transicion</p>
+          <p>Ruda + palo santo + mirra = proteccion fuerte con raiz argentina</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- BONO 3 -->
+<section id="b3" class="sec-bg">
+<div class="sec-wrap">
+  <div class="eyebrow">Bono 3</div>
+  <h2 class="sec-title">Aromas que sienten:<br><em>fragancias para cada estado emocional</em></h2>
+  <p class="sec-lead">Toca el estado emocional para ver la mezcla especifica.</p>
+  <div class="emo-grid">
+    <div class="emo-btn" onclick="togEmo(this,'em0')"><span class="emo-em">&#x1F62E;&#x200D;&#x1F4A8;</span><div class="emo-lbl">Ansiedad y ruido mental</div></div>
+    <div class="emo-btn" onclick="togEmo(this,'em1')"><span class="emo-em">&#x1F327;&#xFE0F;</span><div class="emo-lbl">Tristeza y peso emocional</div></div>
+    <div class="emo-btn" onclick="togEmo(this,'em2')"><span class="emo-em">&#x1F525;</span><div class="emo-lbl">Enojo y frustracion</div></div>
+    <div class="emo-btn" onclick="togEmo(this,'em3')"><span class="emo-em">&#x1F630;</span><div class="emo-lbl">Miedo e inseguridad</div></div>
+    <div class="emo-btn" onclick="togEmo(this,'em4')"><span class="emo-em">&#x1F300;</span><div class="emo-lbl">Transicion y cambio</div></div>
+    <div class="emo-btn" onclick="togEmo(this,'em5')"><span class="emo-em">&#x1F3A8;</span><div class="emo-lbl">Creatividad e inspiracion</div></div>
+    <div class="emo-btn" onclick="togEmo(this,'em6')"><span class="emo-em">&#x1F49C;</span><div class="emo-lbl">Amor propio y autocuidado</div></div>
+  </div>
+  <div id="em0" class="emo-detail"><h3>Ansiedad y ruido mental</h3><div class="emo-estado">Pensamientos acelerados, sensacion de que el dia te lleva en lugar de que vos lo llevas.</div><p>Lavanda, benjui, sandalo, palo santo. Aromas calidos y suaves que le hablan al sistema nervioso en el idioma de la calma.</p><div class="receta"><strong>Mezcla sugerida</strong><p>Lavanda 50% + benjui en polvo 30% + sandalo en polvo 20%</p></div></div>
+  <div id="em1" class="emo-detail"><h3>Tristeza y peso emocional</h3><div class="emo-estado">Energia baja, motivacion ausente, sensacion de que el cuerpo pesa mas de lo normal.</div><p>Incienso, citricos secos, canela suave, copal blanco. Aromas que elevan sin estimular en exceso.</p><div class="receta"><strong>Mezcla sugerida</strong><p>Copal blanco 40% + naranja seca 30% + incienso 20% + canela 10%</p></div></div>
+  <div id="em2" class="emo-detail"><h3>Enojo y frustracion</h3><div class="emo-estado">Tension en el cuerpo. Algo necesita moverse pero no encuentra como.</div><p>Romero, cedro, vetiver. No suavizan el enojo: lo acompanan y lo transforman.</p><div class="receta"><strong>Mezcla sugerida</strong><p>Cedro en polvo 40% + romero seco 40% + vetiver 20%</p></div></div>
+  <div id="em3" class="emo-detail"><h3>Miedo e inseguridad</h3><div class="emo-estado">Sensacion de amenaza aunque no haya peligro real. Dificultad para confiar en el propio criterio.</div><p>Mirra, sangre de dragon (pequena cantidad), palo santo, ruda. Protegen y refuerzan el limite energetico personal.</p><div class="receta"><strong>Mezcla sugerida</strong><p>Palo santo 40% + mirra 30% + ruda 20% + sangre de dragon 10%</p></div></div>
+  <div id="em4" class="emo-detail"><h3>Transicion y cambio</h3><div class="emo-estado">Algo termina o algo empieza. La mezcla de nostalgia y expectativa que no tiene nombre.</div><p>Incienso, copal, artemisa. El copal conecta con lo que fue. El incienso eleva hacia lo que viene.</p><div class="receta"><strong>Mezcla sugerida</strong><p>Incienso 40% + copal blanco 40% + artemisa 20%</p></div></div>
+  <div id="em5" class="emo-detail"><h3>Creatividad e inspiracion</h3><div class="emo-estado">Queres crear pero la mente esta en blanco o demasiado llena.</div><p>Cedro, romero, lavanda en pequena cantidad, benjui. Lo que calma el exceso mas lo que activa las ideas.</p><div class="receta"><strong>Mezcla sugerida</strong><p>Cedro 35% + romero 35% + lavanda 20% + benjui 10%</p></div></div>
+  <div id="em6" class="emo-detail"><h3>Amor propio y autocuidado</h3><div class="emo-estado">Despues de dar mucho y cuidar a otros: el momento de estar para una misma.</div><p>Rosa, geranio, sandalo, benjui. Los aromas del amor propio: calidos, suaves y reconfortantes.</p><div class="receta"><strong>Mezcla sugerida</strong><p>Petalos de rosa 50% + sandalo 30% + benjui 20% - El sahumo que te abraza.</p></div></div>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- BONO 4 -->
+<section id="b4">
+<div class="sec">
+  <div class="eyebrow">Bono 4</div>
+  <h2 class="sec-title">El fuego y los ciclos:<br><em>lunas y estaciones</em></h2>
+  <p class="sec-lead">Toca cada fase o momento del ano para ver que encender.</p>
+  <h3 style="font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--cream);margin-bottom:13px">Las cuatro fases lunares</h3>
+  <div class="luna-grid">
+    <div class="luna-btn" onclick="togLuna(this,'lu0')"><span class="luna-icon">&#x1F311;</span><div class="luna-name">Luna nueva</div></div>
+    <div class="luna-btn" onclick="togLuna(this,'lu1')"><span class="luna-icon">&#x1F312;</span><div class="luna-name">Luna creciente</div></div>
+    <div class="luna-btn" onclick="togLuna(this,'lu2')"><span class="luna-icon">&#x1F315;</span><div class="luna-name">Luna llena</div></div>
+    <div class="luna-btn" onclick="togLuna(this,'lu3')"><span class="luna-icon">&#x1F318;</span><div class="luna-name">Luna menguante</div></div>
+  </div>
+  <div id="lu0" class="luna-detail"><h3>Luna nueva - El inicio purificado</h3><p>No es el momento de atraer sino de limpiar y establecer la intencion en el terreno despejado.</p><p><strong style="color:var(--cream)">Sahumerio:</strong> Salvia blanca o ruda con cedro. Mezcla de purificacion pura.</p><p><strong style="color:var(--cream)">Ritual:</strong> Antes de encender el sahumerio, escribi en un papel lo que queres dejar ir. Quema el papel en la llama.</p></div>
+  <div id="lu1" class="luna-detail"><h3>Luna creciente - El impulso activo</h3><p>La energia de lo que queres que crezca. El incienso eleva la intencion, la canela la calienta y el romero la pone en movimiento activo.</p><p><strong style="color:var(--cream)">Sahumerio:</strong> Incienso + canela con un toque de romero.</p><p><strong style="color:var(--cream)">Ritual:</strong> Encende el sahumerio mientras escribis claramente lo que queres que crezca durante este ciclo.</p></div>
+  <div id="lu2" class="luna-detail"><h3>Luna llena - La celebracion y la gratitud</h3><p>Sin pedidos, sin intenciones de cambio: solo gratitud por lo que ya esta. El ritual mas simple y el mas poderoso.</p><p><strong style="color:var(--cream)">Sahumerio:</strong> Incienso y rosas o incienso y benjui.</p><p><strong style="color:var(--cream)">Ritual:</strong> Encende el sahumerio en la noche de luna llena. Si podes, cerca de una ventana desde donde se vea la luna.</p></div>
+  <div id="lu3" class="luna-detail"><h3>Luna menguante - El fuego que suelta</h3><p>La mirra para la transformacion de lo que se suelta. El cedro para la estabilidad de quien queda despues de soltar.</p><p><strong style="color:var(--cream)">Sahumerio:</strong> Mirra y cedro.</p><p><strong style="color:var(--cream)">Ritual:</strong> Mientras el sahumerio arde, cerra los ojos e imagina lo que estas soltando alejandose con el humo.</p></div>
+  <h3 style="font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--cream);margin-bottom:12px;margin-top:8px">El calendario del ano - Hemisferio Sur</h3>
+  <p style="font-size:.84rem;color:var(--muted);margin-bottom:13px">Toca cada momento para ver el sahumerio y el ritual.</p>
+  <div class="est-grid">
+    <div class="est-card" onclick="togEst(this)"><div class="est-head"><span class="est-icon">&#x1F331;</span><div><div class="est-name">Imbolc</div><div class="est-date">Principios de agosto</div></div></div><div class="est-body"><p><strong style="color:var(--cream)">Sahumerio:</strong> Lavanda, benjui y un toque de incienso blanco.</p><p><strong style="color:var(--cream)">Ritual:</strong> Encender una vela blanca junto al sahumerio como simbolo de la luz que regresa.</p></div></div>
+    <div class="est-card" onclick="togEst(this)"><div class="est-head"><span class="est-icon">&#x1F338;</span><div><div class="est-name">Equinoccio de primavera</div><div class="est-date">Septiembre</div></div></div><div class="est-body"><p><strong style="color:var(--cream)">Sahumerio:</strong> Lavanda, petalos de rosa secos y copal blanco.</p><p><strong style="color:var(--cream)">Ritual:</strong> Florecimiento, amor, apertura.</p></div></div>
+    <div class="est-card" onclick="togEst(this)"><div class="est-head"><span class="est-icon">&#x1F525;</span><div><div class="est-name">Beltane</div><div class="est-date">Principios de noviembre</div></div></div><div class="est-body"><p><strong style="color:var(--cream)">Sahumerio:</strong> Rosas, ylang ylang, incienso y canela.</p><p><strong style="color:var(--cream)">Ritual:</strong> La maxima energia de la primavera.</p></div></div>
+    <div class="est-card" onclick="togEst(this)"><div class="est-head"><span class="est-icon">&#x2600;&#xFE0F;</span><div><div class="est-name">Solsticio de verano</div><div class="est-date">Diciembre</div></div></div><div class="est-body"><p><strong style="color:var(--cream)">Sahumerio:</strong> Incienso, citricos secos, flores de verano.</p><p><strong style="color:var(--cream)">Ritual:</strong> Gratitud por la abundancia de la estacion y la alegria de la luz maxima.</p></div></div>
+    <div class="est-card" onclick="togEst(this)"><div class="est-head"><span class="est-icon">&#x1F33E;</span><div><div class="est-name">Lammas</div><div class="est-date">Principios de febrero</div></div></div><div class="est-body"><p><strong style="color:var(--cream)">Sahumerio:</strong> Canela, incienso y vainilla.</p><p><strong style="color:var(--cream)">Ritual:</strong> Gratitud por lo cosechado.</p></div></div>
+    <div class="est-card" onclick="togEst(this)"><div class="est-head"><span class="est-icon">&#x1F342;</span><div><div class="est-name">Equinoccio de otono</div><div class="est-date">Marzo</div></div></div><div class="est-body"><p><strong style="color:var(--cream)">Sahumerio:</strong> Cedro, mirra, canela y hojas secas.</p><p><strong style="color:var(--cream)">Ritual:</strong> El recogimiento, la calidez interior.</p></div></div>
+    <div class="est-card" onclick="togEst(this)"><div class="est-head"><span class="est-icon">&#x1F480;</span><div><div class="est-name">Samhain</div><div class="est-date">Principios de mayo</div></div></div><div class="est-body"><p><strong style="color:var(--cream)">Sahumerio:</strong> Incienso, mirra, sangre de dragon y artemisa.</p><p><strong style="color:var(--cream)">Ritual:</strong> Para honrar a los ancestros. El momento mas poderoso del ano para el trabajo ritual con el humo.</p></div></div>
+    <div class="est-card" onclick="togEst(this)"><div class="est-head"><span class="est-icon">&#x1F56F;&#xFE0F;</span><div><div class="est-name">Solsticio de invierno</div><div class="est-date">Junio</div></div></div><div class="est-body"><p><strong style="color:var(--cream)">Sahumerio:</strong> Incienso, mirra, cedro y un toque de naranja seca.</p><p><strong style="color:var(--cream)">Ritual:</strong> Encendes el sahumerio en la oscuridad total. La unica luz es la llama. Sentas la intencion para el ano que empieza a nacer desde esa noche.</p></div></div>
+  </div>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- BONO 5 -->
+<section id="b5" class="sec-bg">
+<div class="sec-wrap">
+  <div class="eyebrow">Bono 5</div>
+  <h2 class="sec-title">Kits que enamoran:<br><em>packaging y presentaciones</em></h2>
+  <p class="sec-lead">Elige el kit o tipo de packaging para ver los detalles.</p>
+  <div class="tab-row">
+    <button class="tb on" onclick="swTab(this,'kp','kp0')">Kit de inicio</button>
+    <button class="tb" onclick="swTab(this,'kp','kp1')">Kit sahumo completo</button>
+    <button class="tb" onclick="swTab(this,'kp','kp2')">Kit flujo inverso</button>
+    <button class="tb" onclick="swTab(this,'kp','kp3')">Kit lunar</button>
+    <button class="tb" onclick="swTab(this,'kp','kp4')">Ideas de packaging</button>
+  </div>
+  <div id="kp0" class="panel on"><div class="kit-detail"><h3>Kit de inicio al humo sagrado</h3><p style="font-size:.84rem;color:var(--muted);margin-bottom:12px">Para quien nunca uso sahumerios o quiere comenzar una practica. El regalo que da posibilidades.</p><ul class="kit-list"><li>Tres sahumerios en barra de fragancias distintas para explorar</li><li>Porta sahumerios de ceramica o piedra</li><li>Tarjeta con instrucciones y ritual de purificacion basico</li></ul><div style="background:rgba(200,160,64,.07);border:1px solid rgba(200,160,64,.2);border-radius:4px;padding:12px 16px;font-size:.81rem;color:var(--gpale);font-style:italic;font-family:'Playfair Display',serif;margin-top:12px">Quien regala humo sagrado esta regalando una practica, no un objeto.</div></div></div>
+  <div id="kp1" class="panel"><div class="kit-detail"><h3>Kit de sahumo completo</h3><p style="font-size:.84rem;color:var(--muted);margin-bottom:12px">Para quien ya sabe que es el sahumo y quiere la experiencia completa.</p><ul class="kit-list"><li>Mezcla suelta de sahumo de proposito especifico</li><li>Recipiente de ceramica o concha marina para quemar</li><li>4-5 pastillas de carbon vegetal en bolsita hermetica</li><li>Pinzas de metal para manipular el carbon encendido</li><li>Tarjeta con instrucciones completas</li></ul></div></div>
+  <div id="kp2" class="panel"><div class="kit-detail"><h3>Kit conos de flujo inverso</h3><p style="font-size:.84rem;color:var(--muted);margin-bottom:12px">El mas fotografico y premium. El efecto cascada se fotografa y comparte solo.</p><ul class="kit-list"><li>6-8 conos de flujo inverso elaborados a mano</li><li>Quemador de ceramica (montana, fuente o figura espiritual)</li><li>Tarjeta con instrucciones de uso</li></ul><p style="font-size:.81rem;color:var(--muted);margin-top:11px">El de precio mas alto de tu catalogo. El efecto visual lo justifica.</p></div></div>
+  <div id="kp3" class="panel"><div class="kit-detail"><h3>Kit de la practica lunar</h3><p style="font-size:.84rem;color:var(--muted);margin-bottom:12px">Cuatro sahumerios, uno por cada fase. Transforma una compra en una practica mensual.</p><ul class="kit-list"><li>Luna nueva: purificacion - salvia o ruda con cedro</li><li>Luna creciente: impulso - incienso, canela y romero</li><li>Luna llena: gratitud - incienso y rosas o benjui</li><li>Luna menguante: soltar - mirra y cedro</li><li>Caja negra o azul oscuro con imagen de las cuatro fases</li><li>Tarjeta explicativa de cada fase y su ritual</li></ul></div></div>
+  <div id="kp4" class="panel"><div class="kit-detail"><h3>Ideas de packaging que comunican</h3><div class="pack-grid"><div class="pack-opt"><span class="poi">&#x1F33F;</span><div class="pon">Manojos con hilo de canamo</div><p class="pod">Artesanal puro y ancestral</p></div><div class="pack-opt"><span class="poi">&#x1FAD9;</span><div class="pon">Frascos de vidrio con corcho</div><p class="pod">El vidrio muestra la mezcla. El corcho puede ser el portacono integrado.</p></div><div class="pack-opt"><span class="poi">&#x1FAB5;</span><div class="pon">Cajas de madera</div><p class="pod">Premium y regalo para kits completos</p></div><div class="pack-opt"><span class="poi">&#x1F4E6;</span><div class="pon">Bolsas de papel kraft</div><p class="pod">Natural y consciente para unidades individuales</p></div></div></div></div>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- BONO 6 -->
+<section id="b6">
+<div class="sec">
+  <div class="eyebrow">Bono 6</div>
+  <h2 class="sec-title">Proveedores argentinos<br><em>de materia prima y packaging</em></h2>
+  <p class="sec-lead">Selecciona la categoria para ver los proveedores.</p>
+  <div class="tab-row">
+    <button class="tb gold on" onclick="swTab(this,'pvp','pvp0')">Hierbas</button>
+    <button class="tb gold" onclick="swTab(this,'pvp','pvp1')">Resinas</button>
+    <button class="tb gold" onclick="swTab(this,'pvp','pvp2')">Aceites</button>
+    <button class="tb gold" onclick="swTab(this,'pvp','pvp3')">Packaging</button>
+    <button class="tb gold" onclick="swTab(this,'pvp','pvp4')">Carbon y palillos</button>
+    <button class="tb gold" onclick="swTab(this,'pvp','pvp5')">Comunidades</button>
+  </div>
+  <div id="pvp0" class="panel on"><div class="prov-list"><div class="prov-item"><div class="pdot"></div><div><div class="pname">Natier</div><div class="pinfo">Hierbas medicinales y aromaticas a granel. Amplio catalogo de plantas secas y botanica.</div><div class="plink">natier.com.ar</div></div></div><div class="prov-item"><div class="pdot"></div><div><div class="pname">Herbotecnia</div><div class="pinfo">Plantas aromaticas al por mayor. Fuerte en hierbas de la region.</div><div class="plink">herbotecnia.com.ar</div></div></div><div class="prov-item"><div class="pdot"></div><div><div class="pname">Mercado Central de Buenos Aires</div><div class="pinfo">Hierbas frescas a secar y botanica en precio mayorista.</div></div></div></div></div>
+  <div id="pvp1" class="panel"><div class="prov-list"><div class="prov-item"><div class="pdot"></div><div><div class="pname">Insumos Holisticos</div><div class="pinfo">Resinas (incienso, mirra, copal, benjui, sangre de dragon), makko y carbon. Envios a todo el pais.</div><div class="plink">MercadoLibre: insumos holisticos resinas</div></div></div><div class="prov-item"><div class="pdot"></div><div><div class="pname">Arabes Importaciones</div><div class="pinfo">Incienso y mirra de importacion directa. Barrio Once, Buenos Aires.</div></div></div><div class="prov-item"><div class="pdot"></div><div><div class="pname">Importadora Al Bakaa</div><div class="pinfo">Resinas arabes y orientales para uso ritual. CABA y conurbano.</div></div></div></div></div>
+  <div id="pvp2" class="panel"><div class="prov-list"><div class="prov-item"><div class="pdot"></div><div><div class="pname">Gianluca Cosmeticos</div><div class="pinfo">Aceites esenciales puros para cosmetica artesanal. Precios mayoristas.</div><div class="plink">gianlucacosmeticos.com.ar</div></div></div><div class="prov-item"><div class="pdot"></div><div><div class="pname">Cremerie</div><div class="pinfo">Cosmetica natural, aceites esenciales certificados y moldes de silicona.</div><div class="plink">cremerie.com.ar</div></div></div><div class="prov-item"><div class="pdot"></div><div><div class="pname">Provefarma</div><div class="pinfo">Aceites esenciales y materias primas para cosmetica natural a granel.</div><div class="plink">provefarma.com.ar</div></div></div></div></div>
+  <div id="pvp3" class="panel"><div class="prov-list"><div class="prov-item"><div class="pdot"></div><div><div class="pname">Envases Roberto</div><div class="pinfo">Frascos de vidrio de todo tipo con tapa de corcho, metal y plastica.</div><div class="plink">envasesroberto.com.ar</div></div></div><div class="prov-item"><div class="pdot"></div><div><div class="pname">Planeta Envases</div><div class="pinfo">Frascos, cajas de carton, bolsas de papel kraft y celofan.</div><div class="plink">planetaenvases.com.ar</div></div></div><div class="prov-item"><div class="pdot"></div><div><div class="pname">Cintadina</div><div class="pinfo">Cintas, cordones y materiales de atado para presentaciones artesanales.</div><div class="plink">cintandina.com.ar</div></div></div></div></div>
+  <div id="pvp4" class="panel"><div class="prov-list"><div class="prov-item"><div class="pdot"></div><div><div class="pname">Negocios de articulos religiosos</div><div class="pinfo">Pastillas de carbon vegetal en cualquier santeria, herboristeria o negocio de aromas.</div></div></div><div class="prov-item"><div class="pdot"></div><div><div class="pname">MercadoLibre Argentina</div><div class="pinfo">Buscar: pastillas carbon vegetal sahumerio. Para palillos: palillos bambu 25cm, verificar bambu natural sin tratamiento.</div></div></div></div></div>
+  <div id="pvp5" class="panel"><div class="prov-list"><div class="prov-item"><div class="pdot"></div><div><div class="pname">Grupos de Facebook</div><div class="pinfo">Cosmetica Natural Argentina - Emprendedoras Holisticas Argentina - Sahumerios Artesanales Argentina</div></div></div><div class="prov-item"><div class="pdot"></div><div><div class="pname">Hashtags de Instagram</div><div class="pinfo">#sahumeriosargentina - #inciensoartesanal - #holisticoargentina</div></div></div></div></div>
+  <p style="font-size:.72rem;color:var(--muted);margin-top:13px;font-style:italic">Aviso: Los precios y disponibilidad pueden cambiar. Verifica siempre antes de realizar pedidos.</p>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- BONO 7 -->
+<section id="b7" class="sec-bg">
+<div class="sec-wrap">
+  <div class="eyebrow">Bono 7</div>
+  <h2 class="sec-title">Tu primer kit en 7 dias:<br><em>de la intencion a la primera venta</em></h2>
+  <p class="sec-lead">Una accion por dia. Toca cada dia para ver la tarea. Marca los que completaste.</p>
+  <div style="font-size:.78rem;color:var(--muted);margin-bottom:8px">Dias completados: <span id="dCnt" style="color:var(--gbright);font-weight:700">0</span> de 7</div>
+  <div class="prog-bar"><div class="prog-fill" id="dBar" style="width:0%"></div></div>
+  <div style="height:15px"></div>
+  <div class="reto-grid">
+    <div class="dia-card" id="dc0"><div class="dia-head" onclick="togDia(0)"><div class="dia-n">1</div><div class="dia-info"><div class="dia-lbl">Dia 1</div><div class="dia-tit">Elegis y conseguis</div></div><div class="dia-chk" id="dchk0">&#x2713;</div></div><div class="dia-body"><p>Decides los tres productos del primer kit (sahumerio con palillo + cono clasico + sahumo suelto). Haces la lista de materiales y buscas el proveedor mas accesible para tu zona. Haces el pedido o la compra. No importa si no tenes todo perfecto: empezes con lo que podes conseguir hoy.</p><button class="dia-mark" onclick="markDone(0,event)">Marcar como hecho</button></div></div>
+    <div class="dia-card" id="dc1"><div class="dia-head" onclick="togDia(1)"><div class="dia-n">2</div><div class="dia-info"><div class="dia-lbl">Dia 2</div><div class="dia-tit">Fragancia e intencion</div></div><div class="dia-chk" id="dchk1">&#x2713;</div></div><div class="dia-body"><p>Para que es este kit? (purificacion, amor propio, nuevo comienzo). Eleges las plantas y resinas que representen ese proposito usando el Bono 2 y el Bono 3. Escribis la intencion que pondras en la elaboracion.</p><button class="dia-mark" onclick="markDone(1,event)">Marcar como hecho</button></div></div>
+    <div class="dia-card" id="dc2"><div class="dia-head" onclick="togDia(2)"><div class="dia-n">3</div><div class="dia-info"><div class="dia-lbl">Dia 3</div><div class="dia-tit">Elaboras</div></div><div class="dia-chk" id="dchk2">&#x2713;</div></div><div class="dia-body"><p>Preparas el espacio de trabajo: ventilacion, superficies cubiertas, herramientas listas. Relees tu intencion escrita antes de empezar. Elaboras los tres productos y completas la ficha tecnica de cada uno mientras todo seca.</p><button class="dia-mark" onclick="markDone(2,event)">Marcar como hecho</button></div></div>
+    <div class="dia-card" id="dc3"><div class="dia-head" onclick="togDia(3)"><div class="dia-n">4</div><div class="dia-info"><div class="dia-lbl">Dia 4</div><div class="dia-tit">Planificas el packaging</div></div><div class="dia-chk" id="dchk3">&#x2713;</div></div><div class="dia-body"><p>Mientras los sahumerios y conos secan, eleges el packaging para el kit. Disenias o encargas la etiqueta con nombre, ingredientes principales, instrucciones basicas y advertencia de humo. Calculas el precio con la formula: costo real x 2,5.</p><button class="dia-mark" onclick="markDone(3,event)">Marcar como hecho</button></div></div>
+    <div class="dia-card" id="dc4"><div class="dia-head" onclick="togDia(4)"><div class="dia-n">5</div><div class="dia-info"><div class="dia-lbl">Dia 5</div><div class="dia-tit">Verificas, empacas y fotografias</div></div><div class="dia-chk" id="dchk4">&#x2713;</div></div><div class="dia-body"><p>Verificas cada pieza: completamente rigida, sin zonas blandas, sin grietas. Probas quemar uno de cada producto. Empacas el kit completo. Fotografias: primero en reposo, despues en uso con el humo visible. La foto que vende es la del sahumerio encendido.</p><button class="dia-mark" onclick="markDone(4,event)">Marcar como hecho</button></div></div>
+    <div class="dia-card" id="dc5"><div class="dia-head" onclick="togDia(5)"><div class="dia-n">6</div><div class="dia-info"><div class="dia-lbl">Dia 6</div><div class="dia-tit">Escribis la descripcion</div></div><div class="dia-chk" id="dchk5">&#x2713;</div></div><div class="dia-body"><p>Nombre con gancho, descripcion de venta de no mas de tres parrafos sobre la practica y la transformacion (no de los ingredientes). Decides donde lo vas a vender: Instagram, WhatsApp personal, grupo de difusion, feria local.</p><button class="dia-mark" onclick="markDone(5,event)">Marcar como hecho</button></div></div>
+    <div class="dia-card" id="dc6"><div class="dia-head" onclick="togDia(6)"><div class="dia-n">7</div><div class="dia-info"><div class="dia-lbl">Dia 7</div><div class="dia-tit">Publicas y vendes</div></div><div class="dia-chk" id="dchk6">&#x2713;</div></div><div class="dia-body"><p>Publicas la foto, el texto y el precio. Lo comunicas a tu red mas cercana. El primer cliente de tu emprendimiento casi siempre es alguien que ya te conoce. No esperes tener diez kits perfectos. El movimiento llama al movimiento.</p><button class="dia-mark" onclick="markDone(6,event)">Marcar como hecho</button></div></div>
+  </div>
+  <div style="background:rgba(200,160,64,.07);border:1px solid rgba(200,160,64,.2);border-radius:8px;padding:19px 22px;margin-top:17px;text-align:center">
+    <p style="font-family:'Playfair Display',serif;font-style:italic;font-size:.93rem;color:var(--gpale)">El fuego empieza con una sola chispa. Esa chispa sos vos, hoy, publicando.</p>
+  </div>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- NEGOCIO -->
+<section id="negocio">
+<div class="sec">
+  <div class="eyebrow">Ebook - De la creacion a la venta</div>
+  <h2 class="sec-title">Herramientas para<br><em>tu negocio</em></h2>
+  <div class="tab-row">
+    <button class="tb on" onclick="swTab(this,'ngp','ngp0')">Ficha tecnica</button>
+    <button class="tb" onclick="swTab(this,'ngp','ngp1')">Calcular costos</button>
+    <button class="tb" onclick="swTab(this,'ngp','ngp2')">Como comunicar</button>
+  </div>
+  <div id="ngp0" class="panel on"><div class="neg-content"><h3 style="font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--gpale);margin-bottom:13px">Tu recetario profesional</h3><table class="ficha-table"><tr><td>Nombre y lote</td><td>Nombre del producto, fecha y numero de lote para rastrear y reproducir</td></tr><tr><td>Proporciones</td><td>Partes por peso de cada ingrediente, no en gramos fijos sino en proporciones reproducibles</td></tr><tr><td>Aceites</td><td>Tipo, cantidad y porcentaje del peso seco total</td></tr><tr><td>Agua destilada</td><td>Cantidad usada para lograr la consistencia correcta</td></tr><tr><td>Condiciones</td><td>Temperatura y humedad del ambiente durante el secado</td></tr><tr><td>Tiempo secado</td><td>Horas reales hasta estar completamente rigido, sin zonas blandas</td></tr><tr><td>Quema</td><td>Duracion, intensidad del humo, aroma, observaciones</td></tr><tr><td>Costo y precio</td><td>Total del lote y precio de venta por unidad</td></tr></table></div></div>
+  <div id="ngp1" class="panel"><div class="neg-content"><h3 style="font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--gpale);margin-bottom:13px">Los cuatro componentes del costo real</h3><div class="acc" onclick="togAcc(this)" style="margin-bottom:8px"><div class="acc-head"><h3 style="font-size:.9rem">1 - Materia prima</h3><div class="acc-arr">&#x25BC;</div></div><div class="acc-body"><p>Calcula el costo de cada ingrediente por unidad producida. Las resinas (incienso, mirra, copal, sangre de dragon) son los mas caros. El makko rinde mucho: 100g alcanzan para gran cantidad de sahumerios.</p></div></div><div class="acc" onclick="togAcc(this)" style="margin-bottom:8px"><div class="acc-head"><h3 style="font-size:.9rem">2 - Packaging</h3><div class="acc-arr">&#x25BC;</div></div><div class="acc-body"><p>Frasco o caja, etiqueta, hilo o cinta, papel de seda o celofan. Todo lo que sale con el producto va al costo. Calculalo por unidad.</p></div></div><div class="acc" onclick="togAcc(this)" style="margin-bottom:8px"><div class="acc-head"><h3 style="font-size:.9rem">3 - Materiales de trabajo</h3><div class="acc-arr">&#x25BC;</div></div><div class="acc-body"><p>Balanza, espatulas, papel de horno, soportes de secado. Se prorratean entre todos los lotes que producis con esas herramientas.</p></div></div><div class="acc" onclick="togAcc(this)" style="margin-bottom:8px"><div class="acc-head"><h3 style="font-size:.9rem">4 - Tu tiempo</h3><div class="acc-arr">&#x25BC;</div></div><div class="acc-body"><p>El tiempo en sahumerios y conos incluye el amasado, dar forma y el control durante el secado. Es considerablemente mayor por unidad que en otros productos artesanales. No lo regales.</p></div></div><div class="formula-big"><p>Precio minimo de venta</p><div class="fml">Costo real x 2,5</div><small>No competis con el industrial importado. Competis en calidad, intencion y diferenciacion artesanal.</small></div></div></div>
+  <div id="ngp2" class="panel"><div class="neg-content"><h3 style="font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--gpale);margin-bottom:12px">Habla de la practica, no de los ingredientes</h3><p style="font-size:.83rem;color:var(--muted);margin-bottom:15px">La persona que compra esta comprando el momento de encenderlo, el humo que llena el espacio, la sensacion de que algo cambia.</p><div class="com-card"><div class="com-frase">El sahumerio que limpia lo que no se ve pero se siente</div><div class="com-nota">Dice mas que sahumerio de salvia y cedro</div></div><div class="com-card"><div class="com-frase">Para cuando el espacio necesita empezar de nuevo</div><div class="com-nota">Conecta con una necesidad que muchas sienten pero no saben nombrar</div></div><div class="com-card"><div class="com-frase">El humo que acompana los cierres</div><div class="com-nota">Le habla a quien esta terminando algo</div></div><div class="com-card"><div class="com-frase">El kit para ayudarla a renovar la energia de su espacio nuevo</div><div class="com-nota">Describe la transformacion, no el producto</div></div></div></div>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- BONO 8 -->
+<section id="b8" class="sec-bg">
+<div class="sec-wrap">
+  <div class="eyebrow">Bono 8</div>
+  <h2 class="sec-title">Mentalidad emprendedora<br><em>para quien trabaja con el fuego</em></h2>
+  <p class="sec-lead">Toca cada tema para expandirlo. No es motivacion. Es alquimia real.</p>
+  <div class="mental-grid">
+    <div class="mc" onclick="this.classList.toggle('open')"><div class="mc-head"><h3>El miedo no desaparece cuando el producto esta perfecto</h3><div class="mc-arr">&#x25BC;</div></div><div class="mc-body"><p>Los miedos no son senales de que el producto es malo. Son senales de que el proyecto importa. Solo le tenemos miedo a las cosas que nos importan de verdad.</p><p>El miedo desaparece cuando empezas a moverte a pesar de el.</p><div class="mc-quote"><strong>Herramienta practica</strong><p>Ponete una fecha limite real. No cuando este lista. Una fecha. El proximo sabado publico. Y publicas. Aunque te tiemble la mano cuando apretas enviar.</p></div></div></div>
+    <div class="mc" onclick="this.classList.toggle('open')"><div class="mc-head"><h3>La perfeccion es el nombre elegante de la procrastinacion</h3><div class="mc-arr">&#x25BC;</div></div><div class="mc-body"><p>Todavia no estoy lista es casi siempre una forma de evitar el momento de lanzar. La artesana con diez anos de experiencia tambien tuvo un primer lote que no salio como esperaba.</p><p>Lo que la diferencia de quien no empezo es que lo hizo igual.</p><div class="mc-quote"><strong>Eckhart Tolle</strong><p>Darse cuenta de que uno no es sus pensamientos es el comienzo de la libertad.</p></div></div></div>
+    <div class="mc" onclick="this.classList.toggle('open')"><div class="mc-head"><h3>El sindrome de la impostora y como trabajarlo</h3><div class="mc-arr">&#x25BC;</div></div><div class="mc-body"><p>No necesitas ser la mayor experta del mundo en humo sagrado. Necesitas saber mas que tu clienta. Tu clienta no sabe que es el makko, ni la diferencia entre el copal blanco y el negro. Vos si. Eso es suficiente.</p><div class="mc-quote"><strong>Herramienta practica</strong><p>Escribi una lista de todo lo que sabes que tu clienta no sabe. Esa lista es tu credencial. Leela antes de publicar cuando el sindrome aparezca.</p></div></div></div>
+    <div class="mc" onclick="this.classList.toggle('open')"><div class="mc-head"><h3>El precio bajo es el autosabotaje mas elegante</h3><div class="mc-arr">&#x25BC;</div></div><div class="mc-body"><p>Tu sahumerio vale el conocimiento acumulado, la intencion puesta y la calidad de los ingredientes elegidos. No compite con el industrial importado de India. Compite en otro mercado: el de la intencion y la calidad.</p><div class="mc-quote"><strong>Clarissa Pinkola Estes</strong><p>Hay que recordar que el derecho de existir no se otorga, se tiene.</p></div></div></div>
+    <div class="mc" onclick="this.classList.toggle('open')"><div class="mc-head"><h3>La espiritualidad como fortaleza, no como debilidad</h3><div class="mc-arr">&#x25BC;</div></div><div class="mc-body"><p>Algunas emprendedoras holisticas sienten que cobrar contamina la dimension sagrada del trabajo. Esa creencia es un obstaculo. No una virtud.</p><p>La reciprocidad es parte del equilibrio energetico. Dar sin retorno no te hace mas espiritual: te agota.</p><div class="mc-quote"><strong>Para recordar</strong><p>Cobrar lo que tu trabajo vale es un acto de respeto propio. Le estas diciendo a tu clienta: esto tiene valor.</p></div></div></div>
+    <div class="mc" onclick="this.classList.toggle('open')"><div class="mc-head"><h3>El fuego que no se apaga</h3><div class="mc-arr">&#x25BC;</div></div><div class="mc-body"><p>Hay momentos en que la venta no llega y la duda regresa. Es normal. No es senal de que el proyecto fallo. Es parte del proceso de cualquier emprendimiento que esta construyendose.</p><p>Lo que distingue a quien construye de quien abandona no es la ausencia de duda. Es la capacidad de seguir encendiendo el fuego aunque la duda este ahi.</p><div class="mc-quote"><strong>Joe Dispenza</strong><p>El cambio solo ocurre cuando el dolor de quedarte igual es mayor que el dolor de cambiar.</p></div></div></div>
+  </div>
+  <div style="max-width:680px;margin:0 auto">
+    <h3 style="font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--cream);text-align:center;margin-bottom:26px">Las tres herramientas que cambian todo</h3>
+    <div class="acc" onclick="togAcc(this)" style="margin-bottom:9px"><div class="acc-head"><h3>1 - El ritual antes de publicar</h3><div class="acc-arr">&#x25BC;</div></div><div class="acc-body"><p>Antes de publicar cualquier producto o contenido, encende un sahumerio durante un minuto. Como gesto de intencion que le dice a tu sistema nervioso que lo que estas a punto de hacer importa y que estas preparada para hacerlo.</p></div></div>
+    <div class="acc" onclick="togAcc(this)" style="margin-bottom:9px"><div class="acc-head"><h3>2 - El diario de evidencia</h3><div class="acc-arr">&#x25BC;</div></div><div class="acc-body"><p>Anota cada vez que alguien valora tu trabajo: un comentario positivo, una venta, una consulta. Cuando el sindrome de la impostora aparezca, abris ese diario. La evidencia es mas fuerte que el miedo.</p></div></div>
+    <div class="acc" onclick="togAcc(this)"><div class="acc-head"><h3>3 - La comunidad antes del lanzamiento</h3><div class="acc-arr">&#x25BC;</div></div><div class="acc-body"><p>Comparti lo que estas haciendo con al menos tres personas de confianza antes de publicarlo. No para que te digan que es perfecto sino para practicar decir en voz alta lo que haces y por que vale.</p></div></div>
+  </div>
+</div>
+</section>
+
+<!-- CHAT -->
+<div class="chat-wrap" id="chat">
+  <div class="chat-inner">
+    <div class="chat-hdr">
+      <div class="eyebrow">Para alumnas</div>
+      <h2>Consulta a la<br><em style="color:var(--gbright)">Alquimista del Humo</em></h2>
+      <p>Dudas sobre proporciones, plantas, emociones, ciclos, kits, proveedores o mentalidad. Entrenada con todo el programa.</p>
+    </div>
+    <div class="chat-box">
+      <div class="chat-top"><div class="cdot"></div><div><div class="ctitle">La Alquimista del Humo</div><div class="csub">Asistente del programa Online</div></div></div>
+      <div class="c-msgs" id="cMsgs">
+        <div class="cmsg a"><div class="cav">&#x1F525;</div><div class="cbb">Hola! Soy la asistente del programa Aromas que Venden al Mundo. Puedo ayudarte con cualquier duda sobre elaboracion, ingredientes, mezclas emocionales, ciclos lunares, kits, proveedores o tu emprendimiento. En que te puedo ayudar hoy?</div></div>
+      </div>
+      <div class="c-input-area">
+        <div class="c-sugg" id="cSugg">
+          <button class="sug" onclick="sendS(this)">Que es el makko?</button>
+          <button class="sug" onclick="sendS(this)">Sahumo para la ansiedad</button>
+          <button class="sug" onclick="sendS(this)">Mi sahumerio se apaga solo</button>
+          <button class="sug" onclick="sendS(this)">Como calculo el precio?</button>
+          <button class="sug" onclick="sendS(this)">Sahumerio para luna nueva</button>
+        </div>
+        <div class="c-form">
+          <textarea class="c-inp" id="cInp" placeholder="Escribi tu pregunta..." rows="1" onkeydown="hKey(event)"></textarea>
+          <button class="c-send" id="cBtn" onclick="sendM()">Enviar</button>
+        </div>
+      </div>
+    </div>
+    <p class="c-disc">Entrenada con el ebook y los 8 bonos del programa.</p>
+  </div>
+</div>
+
+<footer><div class="flogo">Aromas que Venden al Mundo</div><p>aromasquevendenalmundo.com.ar - El fuego sagrado empieza en tus manos</p></footer>
+
+<script>
+// ---- QUOTES ----
+var QS=[
+  {t:"El cambio solo ocurre cuando el dolor de quedarte igual es mayor que el dolor de cambiar.",a:"Joe Dispenza"},
+  {t:"Darse cuenta de que uno no es sus pensamientos es el comienzo de la libertad.",a:"Eckhart Tolle"},
+  {t:"El fuego transforma. El humo purifica. La intencion dirige. Bienvenida a la alquimia.",a:"El Manifiesto"},
+  {t:"Hay que recordar que el derecho de existir no se otorga, se tiene.",a:"Clarissa Pinkola Estes"},
+  {t:"Lo que buscas tambien te esta buscando.",a:"Rumi"},
+  {t:"Cobrar lo que vale tu trabajo es un acto de respeto propio.",a:"La Alquimista que Vende"},
+  {t:"Mi mision en la vida no es simplemente sobrevivir, sino prosperar.",a:"Maya Angelou"},
+  {t:"El humo sube. Lleva lo que le pones. Y algo en el espacio cambia.",a:"El Manifiesto"}
+];
+var cq=0, qt=null;
+function showQ(i){
+  var te=document.getElementById("qT"), ae=document.getElementById("qA");
+  te.classList.remove("vis"); ae.classList.remove("vis");
+  setTimeout(function(){
+    te.textContent='"'+QS[i].t+'"';
+    ae.textContent="- "+QS[i].a;
+    te.classList.add("vis"); ae.classList.add("vis");
+    document.querySelectorAll(".qd").forEach(function(d,j){ d.classList.toggle("on",j===i); });
+  },380);
+}
+(function(){
+  var w=document.getElementById("qD");
+  QS.forEach(function(_,i){
+    var d=document.createElement("div"); d.className="qd";
+    d.onclick=function(){ clearInterval(qt); cq=i; showQ(i); startQt(); };
+    w.appendChild(d);
+  });
+  showQ(0); startQt();
+})();
+function startQt(){ qt=setInterval(function(){ cq=(cq+1)%QS.length; showQ(cq); },5000); }
+
+// ---- TABS ----
+function swTab(btn, prefix, panelId){
+  var row=btn.closest(".tab-row");
+  row.querySelectorAll(".tb").forEach(function(b){ b.classList.remove("on"); });
+  btn.classList.add("on");
+  document.querySelectorAll("[id^='"+prefix+"']").forEach(function(p){ p.classList.remove("on"); });
+  document.getElementById(panelId).classList.add("on");
+}
+
+// ---- ACCORDIONS ----
+function togAcc(el){ el.classList.toggle("open"); }
+
+// ---- EMOTIONS ----
+var emoActivo=null;
+function togEmo(btn, detailId){
+  document.querySelectorAll(".emo-btn").forEach(function(b){ b.classList.remove("on"); });
+  document.querySelectorAll(".emo-detail").forEach(function(d){ d.classList.remove("on"); });
+  if(emoActivo===detailId){ emoActivo=null; return; }
+  btn.classList.add("on");
+  document.getElementById(detailId).classList.add("on");
+  emoActivo=detailId;
+}
+
+// ---- LUNA ----
+var lunaActiva=null;
+function togLuna(btn, detailId){
+  document.querySelectorAll(".luna-btn").forEach(function(b){ b.classList.remove("on"); });
+  document.querySelectorAll(".luna-detail").forEach(function(d){ d.classList.remove("on"); });
+  if(lunaActiva===detailId){ lunaActiva=null; return; }
+  btn.classList.add("on");
+  document.getElementById(detailId).classList.add("on");
+  lunaActiva=detailId;
+}
+
+// ---- ESTACIONES ----
+function togEst(card){
+  var wasOn=card.classList.contains("on");
+  document.querySelectorAll(".est-card").forEach(function(c){ c.classList.remove("on"); });
+  if(!wasOn) card.classList.add("on");
+}
+
+// ---- RETO 7 DIAS ----
+var dDone=[false,false,false,false,false,false,false];
+function togDia(i){ document.getElementById("dc"+i).classList.toggle("open"); }
+function markDone(i, e){
+  e.stopPropagation();
+  dDone[i]=!dDone[i];
+  var card=document.getElementById("dc"+i);
+  var chk=document.getElementById("dchk"+i);
+  card.classList.toggle("done", dDone[i]);
+  chk.style.color=dDone[i]?"#4ade80":"transparent";
+  e.target.textContent=dDone[i]?"Completado":"Marcar como hecho";
+  var count=dDone.filter(function(v){ return v; }).length;
+  document.getElementById("dCnt").textContent=count;
+  document.getElementById("dBar").style.width=(count/7*100)+"%";
+}
+
+// ---- NAV ACTIVE ----
+var secIds=["mapa","productos","b1","b2","b3","b4","b5","b6","b7","negocio","b8","chat"];
+window.addEventListener("scroll",function(){
+  var cur="";
+  secIds.forEach(function(id){
+    var el=document.getElementById(id);
+    if(el && el.getBoundingClientRect().top<100) cur=id;
+  });
+  document.querySelectorAll(".nav-links a").forEach(function(l){
+    l.classList.toggle("active", l.getAttribute("href")==="#"+cur);
+  });
+},{passive:true});
+
+// ---- CHAT ----
+var SYS="Sos la asistente del programa Aromas que Venden al Mundo. Personalidad calida, profunda y directa. Hablas en espanol rioplatense (vos, vas, tenes). Responde de forma concisa y util. PRODUCTOS: 1)Con palillo: 60g polvo+20g makko+10g resinas+agua+5-9g aceites, secar 24-72hs. 2)Sin palillo: mas makko, 48-96hs. 3)Conos: 6:3:1 polvo:makko:resinas+5-10% aceites. 4)Flujo inverso: canal hueco 1.5-2mm+quemador especifico. 5)Sahumos sueltos: 50-60% hierbas+20-30% resinas+10-20% flores, sobre carbon. 6)Bombas: 2 bicarbonato+1 acido citrico+1 maicena+3-5% aceites, gota a gota. MAKKO: aglutinante principal, arde uniforme, aroma neutro. ERRORES: Agrieta=poco agua. Apaga=demasiado makko o no seco. Flujo inverso sin efecto=canal obstruido. Bomba en molde=liquidos muy rapido. PRECIO: costo real x 2.5. No dar precios fijos. BONO 1: Salvia blanca(antibacteriana), palo santo(suave), enebro(proteccion duradera), romero(activa), cedro(protege), ruda(tradicion argentina). Ritual: ventana abierta, sentido antihorario, rincones superiores, intencion clara. BONO 2: 3 capas: hierbas+resinas+maderas ancla. Incienso=el mas versatil. Mirra=el ancla. Artemisa=suenos. BONO 3: Ansiedad: lavanda50+benjui30+sandalo20. Tristeza: copal40+naranja30+incienso20+canela10. Enojo: cedro40+romero40+vetiver20. Miedo: palo santo40+mirra30+ruda20+sangre de dragon10. Transicion: incienso40+copal40+artemisa20. Amor propio: rosa50+sandalo30+benjui20. BONO 4: Luna nueva=purificacion. Creciente=impulso (incienso+canela+romero). Llena=gratitud. Menguante=soltar (mirra+cedro). Hemisferio sur: Imbolc agosto, Primavera septiembre, Beltane noviembre, Verano diciembre, Lammas febrero, Otono marzo, Samhain mayo, Invierno junio. BONO 5: Kit inicio (3 sahumerios+portasahumerios+tarjeta). Kit sahumo (mezcla+ceramica+carbon+pinzas). Kit flujo inverso (6-8 conos+quemador). Kit lunar (4 sahumerios por fase). BONO 6: Hierbas: Natier, Herbotecnia. Resinas: Insumos Holisticos (ML), Once. Aceites: Gianluca, Cremerie, Provefarma. Packaging: Envases Roberto, Planeta Envases, Cintadina. BONO 7: Dia1=materiales. Dia2=fragancia+intencion. Dia3=elaborar+ficha. Dia4=packaging+precio. Dia5=verificar+empacar+fotografiar. Dia6=descripcion. Dia7=PUBLICAR. BONO 8: Miedo es senal de que importa. Perfeccion=procrastinacion. Sindrome impostora: ya sabes mas que tu clienta. Precio bajo=autosabotaje. Espiritualidad y dinero no son opuestos.";
+var hist=[], sending=false;
+function addMsg(role,content){
+  var el=document.getElementById("cMsgs");
+  var d=document.createElement("div"); d.className="cmsg "+role[0];
+  var av=document.createElement("div"); av.className="cav"; av.textContent=role==="assistant"?"🔥":"✨";
+  var bb=document.createElement("div"); bb.className="cbb"; bb.textContent=content;
+  d.appendChild(av); d.appendChild(bb); el.appendChild(d); el.scrollTop=el.scrollHeight;
+}
+function addTyping(){
+  var el=document.getElementById("cMsgs");
+  var d=document.createElement("div"); d.className="cmsg a"; d.id="typ";
+  d.innerHTML='<div class="cav">&#x1F525;</div><div class="cbb"><div class="typing"><span></span><span></span><span></span></div></div>';
+  el.appendChild(d); el.scrollTop=el.scrollHeight;
+}
+async function sendM(){
+  if(sending) return;
+  var inp=document.getElementById("cInp");
+  var txt=inp.value.trim(); if(!txt) return;
+  sending=true; document.getElementById("cBtn").disabled=true;
+  document.getElementById("cSugg").style.display="none";
+  inp.value=""; inp.style.height="auto";
+  addMsg("user",txt); hist.push({role:"user",content:txt}); addTyping();
+  try{
+    var res=await fetch("/api/chat",{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:1000,system:SYS,messages:hist})
+    });
+    var data=await res.json();
+    var typ=document.getElementById("typ"); if(typ) typ.remove();
+    var reply=data.content&&data.content[0]?data.content[0].text:"Lo siento, hubo un error. Intenta de nuevo.";
+    addMsg("assistant",reply); hist.push({role:"assistant",content:reply});
+  }catch(e){
+    var typ=document.getElementById("typ"); if(typ) typ.remove();
+    addMsg("assistant","Lo siento, no pude conectarme. Revisa tu conexion.");
+  }
+  sending=false; document.getElementById("cBtn").disabled=false;
+}
+function sendS(btn){ document.getElementById("cInp").value=btn.textContent; sendM(); }
+function hKey(e){
+  if(e.key==="Enter"&&!e.shiftKey){ e.preventDefault(); sendM(); }
+  var ta=e.target; ta.style.height="auto"; ta.style.height=Math.min(ta.scrollHeight,90)+"px";
+}
+</script>
+</body>
+</html>
