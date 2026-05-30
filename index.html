@@ -954,7 +954,7 @@ async function sendM(){
   inp.value=""; inp.style.height="auto";
   addMsg("user",txt); hist.push({role:"user",content:txt}); addTyping();
   try{
-    var res=await fetch("https://api.anthropic.com/v1/messages",{
+    var res=await fetch("/api/chat",{
       method:"POST",
       headers:{"Content-Type":"application/json"},
       body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:1000,system:SYS,messages:hist})
